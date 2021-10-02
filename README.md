@@ -1,6 +1,6 @@
 # Business Intelligence aplicado a Fluxos de Rede
 
-#### Aluno: [Carlos Renato Lemos Rodrigues](https://github.com/link_do_github).
+#### Aluno: [Carlos Renato Lemos Rodrigues](https://github.com/carlosrenatolr).
 #### Orientador: [Anderson Nascimento](https://github.com/insightds).
 
 ---
@@ -36,23 +36,47 @@ A partir do modelo transacional atualmente em uso pela empresa, será proposto u
 
 O Modelo Transacional é descrito de forma simplificada na Figura 1. A tabela “flows” foi retirada diretamente do banco de dados responsável por coletar todos os dados de fluxos de rede da empresa e contém todas as informações de fluxo de acordo com o descrito no protocolo IPFIX. A tabela “subnet” representa um cadastro de sub-redes mantido pela equipe que gerencia a rede interna, atrelando cada sub-rede a uma filial. A tabela “ip” também é gerenciada por essa equipe, associando o IP do computador ao respectivo funcionário através da matrícula. Já as tabelas “funcionarios” e “filiais” foram retiradas do sistema de RH da empresa. Essas tabelas contêm dados básicos dos funcionários como nome, matrícula, CPF, data de nascimento e e-mail, e dados sobre as filiais, como o endereço, cidade e estado.
 
+![Figura 1](modelo_transacional.png)
+
+*Figura 1. Modelo Transacional da empresa.*
+
 ### 4. Stage Area
 
 Usando o software Power Architect, foi criado um modelo Stage Area a partir dos dados extraídos do Modelo Transacional como um passo intermediário para chegar no Data Warehouse, confome detalhado na Figura 2. Os dados foram manipulados para criar um modelo do tipo “estrela”. Ao mesmo tempo, colunas consideradas não relevantes para o propósito final foram retiradas para tornar o modelo mais simples. Todo esse processo de ETL e carregamento de dados foi realizado com o software Pentaho, como mostra a Figura 3. A base de dados escolhida para carregar os dados do Stage Area foi o PostgreSQL, gerenciada usando a plataforma pgAdmin.
+
+![Figura 2](modelo_st.png)
+
+*Figura 2. Modelo Stage Area criado a partir dos dados do Modelo Transacional.*
+
+![Figura 3](projeto_pdi_st.png)
+
+*Figura 3. Projeto criado no Pentaho para carga do Stage Area*
 
 ### 5. Data Warehouse
 
 Baseado no projeto do Stage Area, um Data Warehouse (DW) foi criado no PostgreSQL usando o Power Architect, de acordo com a Figura 4. O projeto do Pentaho da Figura 5 foi usado para a carga dos dados no DW.
 Com o DW criado e devidamente populado com os dados, é possível utilizar ferramentas de Business Intelligence e Analytics como Power BI, Qlikview, Tableau e Spotfire para criação de dashboards gerenciais que ajudarão a empresa nos processos de tomada de decisão.
 
+![Figura 4](modelo_dw.png)
+
+*Figura 4. Modelo DW criado a partir do Stage Area.*
+
+![Figura 5](projeto_pdi_dw.png)
+
+*Figura 5. Projeto criado no Pentaho para carga do Data Warehouse.*
+
 ### 6. Construção do dashboard gerencial
 
 Para analisar os dados e criar dashboards gerenciais, foi usada a ferramenta de Business Intelligence da Microsoft, o Power BI.
 No dashboard intitulado “Painel de Uso da Rede Interna”, como mostra a Figura 6, o corpo gerencial da empresa tem acesso rápido a alguns dados importantes como o total de usuários únicos da rede, o total de tráfego cursado durante o período de tempo analisado, além de consultar o tráfego em GB pelo dia do ano. O dashboard também possui outras visualizações como um mapa contendo a localização geográfica das filiais, cujo tamanho do ponto corresponde ao volume de dados trafegados daquela filial, uma pizza estratificando o tráfego por filial (para ter uma visão percentual da contribuição de cada unidade da empresa) e dois gráficos de barras mostrando o TOP 10  - Tráfego (GB) por serviço (tipo de protocolo de comunicação utilizado pelo usuário) e o TOP 10 – Tráfego (GB) por IP de Origem, em que é possível identificar os funcionários que mais utilizam a rede, em termos de volume de dados, através de seu IP. É importante ressaltar que o relatório criado no Power BI é interativo, ou seja, o usuário pode filtrar todas as visualizações a seu critério, por exemplo, mostrando todos os dados de apenas uma filial.
 
+![Figura 6](dashboard_pbi.png)
+
+*Figura 6 – Dashboard Gerencial criado no Microsoft Power BI.*
+
 ### 7. Conclusão
 
-Neste artigo foi evidenciado que os dados gerados pelo uso do protocolo IPFIX, ou Netflow, além de ser primordial para as equipes de rede e telecomunicações de uma empresa, também pode ser bastante útil para o corpo gerencial tomar decisões de forma rápida através de um dashboard gerencial criado em uma ferramenta de Business Intelligence.
+Neste artigo foi evidenciado que os dados gerados pelo uso do protocolo IPFIX, ou Netflow, além de ser primordial para as equipes de rede e telecomunicações de uma empresa, também pode ser bastante útil para o corpo gerencial tomar decisões de forma rápida através de um dashboard criado em uma ferramenta de Business Intelligence.
 
 ---
 
