@@ -9,7 +9,7 @@ Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como
 
 - [Link para o código](https://github.com/carlosrenatolr/Business-Intelligence-aplicado-a-Fluxos-de-Rede).
 
-- [Link para a monografia](Business Intelligence aplicado a Fluxos de Rede.docx).
+- [Link para a monografia](Business%20Intelligence%20aplicado%20a%20Fluxos%20de%20Rede.docx).
 
 ---
 
@@ -29,7 +29,7 @@ Este artigo tem por objetivo apresentar as vantagens do uso de técnicas de Busi
 
 ### 2. Estudo de Caso
 
-Neste artigo, serão analisados dados de uma empresa fictícia que possui filiais nas cidades do Rio de Janeiro, Belo Horizonte, Brasília, Salvador, Porto Alegre e São Paulo. Embora a empresa em si não exista, serão usados dados reais retirados da plataforma Kagle [Rojas 2020]. São dados coletados da rede interna da instituição de ensino Universidad Del Cauca, da Colômbia, em diferentes dias do mês de abril/2019.
+Neste artigo, serão analisados dados de uma empresa fictícia que possui filiais nas cidades do Rio de Janeiro, Belo Horizonte, Brasília, Salvador, Porto Alegre e São Paulo. Embora a empresa em si não exista, serão usados dados reais retirados da plataforma [Kagle](https://www.kaggle.com/jsrojas/labeled-network-traffic-flows-114-applications). São dados coletados da rede interna da instituição de ensino Universidad Del Cauca, da Colômbia, em diferentes dias do mês de abril/2019.
 A partir do modelo transacional atualmente em uso pela empresa, será proposto um modelo de Stage Area e Data Warehouse, fazendo as transformações necessárias nos dados, e culminando em um dashboard gerencial, em que informações básicas da rede interna sejam facilmente apresentadas, como o total de usuários, tráfego cursado, serviços de rede com mais tráfego e os maiores utilizadores da rede interna por IP de origem. E tudo isso podendo ser estratificado por filial.
 
 ### 3. Modelo Transacional
@@ -38,7 +38,7 @@ O Modelo Transacional é descrito de forma simplificada na Figura 1. A tabela �
 
 ### 4. Stage Area
 
-Usando o software Power Architect [SQLPOWER 2016], foi criado um modelo Stage Area a partir dos dados extraídos do Modelo Transacional como um passo intermediário para chegar no Data Warehouse, confome detalhado na Figura 2. Os dados foram manipulados para criar um modelo do tipo “estrela”. Ao mesmo tempo, colunas consideradas não relevantes para o propósito final foram retiradas para tornar o modelo mais simples. Todo esse processo de ETL e carregamento de dados foi realizado com o software Pentaho [Hitachi 2019], como mostra a Figura 3. A base de dados escolhida para carregar os dados do Stage Area foi o PostgreSQL, gerenciada usando a plataforma pgAdmin [pgAdmin 2021].
+Usando o software Power Architect, foi criado um modelo Stage Area a partir dos dados extraídos do Modelo Transacional como um passo intermediário para chegar no Data Warehouse, confome detalhado na Figura 2. Os dados foram manipulados para criar um modelo do tipo “estrela”. Ao mesmo tempo, colunas consideradas não relevantes para o propósito final foram retiradas para tornar o modelo mais simples. Todo esse processo de ETL e carregamento de dados foi realizado com o software Pentaho, como mostra a Figura 3. A base de dados escolhida para carregar os dados do Stage Area foi o PostgreSQL, gerenciada usando a plataforma pgAdmin.
 
 ### 5. Data Warehouse
 
@@ -47,7 +47,7 @@ Com o DW criado e devidamente populado com os dados, é possível utilizar ferra
 
 ### 6. Construção do dashboard gerencial
 
-Para analisar os dados e criar dashboards gerenciais, foi usada a ferramenta de Business Intelligence da Microsoft, o Power BI [Microsoft 2021].
+Para analisar os dados e criar dashboards gerenciais, foi usada a ferramenta de Business Intelligence da Microsoft, o Power BI.
 No dashboard intitulado “Painel de Uso da Rede Interna”, como mostra a Figura 6, o corpo gerencial da empresa tem acesso rápido a alguns dados importantes como o total de usuários únicos da rede, o total de tráfego cursado durante o período de tempo analisado, além de consultar o tráfego em GB pelo dia do ano. O dashboard também possui outras visualizações como um mapa contendo a localização geográfica das filiais, cujo tamanho do ponto corresponde ao volume de dados trafegados daquela filial, uma pizza estratificando o tráfego por filial (para ter uma visão percentual da contribuição de cada unidade da empresa) e dois gráficos de barras mostrando o TOP 10  - Tráfego (GB) por serviço (tipo de protocolo de comunicação utilizado pelo usuário) e o TOP 10 – Tráfego (GB) por IP de Origem, em que é possível identificar os funcionários que mais utilizam a rede, em termos de volume de dados, através de seu IP. É importante ressaltar que o relatório criado no Power BI é interativo, ou seja, o usuário pode filtrar todas as visualizações a seu critério, por exemplo, mostrando todos os dados de apenas uma filial.
 
 ### 7. Conclusão
