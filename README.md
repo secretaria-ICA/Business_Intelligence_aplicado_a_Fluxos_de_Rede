@@ -1,4 +1,4 @@
-# Business Intelligence aplicado a Fluxos de Rede
+# Business_Intelligence_Aplicado_a_Fluxos_de_Rede
 
 #### Aluno: [Carlos Renato Lemos Rodrigues](https://github.com/carlosrenatolr).
 #### Orientador: [Anderson Nascimento](https://github.com/insightds).
